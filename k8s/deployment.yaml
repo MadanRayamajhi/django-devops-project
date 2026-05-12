@@ -13,9 +13,19 @@ spec:
       labels:
         app: django
 
+        spec:
+  template:
+    spec:  
+      imagePullSecrets:
+      - name: dockerhub-secret
+      containers:
+      - name: django-app
+        image: madanrayamajhi/django-prod:latest
+
     spec:
       containers:
         - name: django
           image: your-dockerhub/django-app:latest
           ports:
             - containerPort: 8000
+            
