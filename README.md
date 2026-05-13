@@ -125,13 +125,3 @@ The current Terraform configuration includes an AWS EC2 instance resource for Je
 - Kubernetes manifests include a load-balanced service and ingress rule for `django.example.com`.
 - `docker-compose.yml` creates a Postgres service with `devopsdb`, `admin`, and password `password`.
 
-## Contributing
-
-1. Fork the repository
-2. Create a branch: `git checkout -b feature/name`
-3. Commit your changes
-4. Push and open a pull request
-
-## License
-
-MIT License.
