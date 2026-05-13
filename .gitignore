@@ -1,0 +1,3 @@
+backend/.env
+minikube-linux-amd64
+*.bak
