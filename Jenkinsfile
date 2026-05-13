@@ -24,9 +24,9 @@ pipeline {
             }
         }
 
-        stage('Test API') {
+                stage('Test API') {
             steps {
-                sh 'sleep 5'
+                sh 'sleep 15'  // पहिले 5 सेकेण्ड थियो, अब 15 बनाइयो
                 sh 'curl -f http://localhost:8000 || exit 1'
             }
         }
