@@ -1,0 +1,27 @@
+ stages {
+
+        stage('Clone') {
+            steps {
+                git 'https://github.com/user/django-project.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t django-app ./backend'
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker push your-dockerhub/django-app:latest'
+            }
+        }
+
+        stage('Deploy Kubernetes') {
+            steps {
+                sh 'kubectl apply -f kubernetes/'
+            }
+        }
+    }
+}
