@@ -31,8 +31,8 @@ pipeline {
 
         stage('Test API') {
             steps {
-                sh 'sleep 10'
-                sh 'curl -f http://localhost:8000 || exit 1'
+                sh 'sleep 5'
+                sh 'docker exec django-app curl -f http://localhost:8000 || exit 1'
             }
         }
     }
