@@ -8,6 +8,13 @@ pipeline {
             }
         }
 
+        stage('Clean old container') {
+            steps {
+                sh 'docker stop django-app || true'
+                sh 'docker rm django-app || true'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 dir('backend') {
@@ -18,16 +25,14 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                sh 'docker stop django-app || true'
-                sh 'docker rm django-app || true'
                 sh 'docker run -d --name django-app -p 8000:8000 django-app'
             }
         }
 
-                stage('Test API') {
+        stage('Test API') {
             steps {
-                sh 'sleep 15'  // पहिले 5 सेकेण्ड थियो, अब 15 बनाइयो
-                sh 'curl -f http://localhost:8000 || exit 1'
+                sh 'sleep 5'
+                sh 'docker exec django-app curl -f http://localhost:8000 || exit 1'
             }
         }
     }
